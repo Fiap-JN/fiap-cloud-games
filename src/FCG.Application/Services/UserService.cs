@@ -1,12 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FCG.Application.Interfaces;
+using FCG.Application.Requests;
+using FCG.Application.Responses;
+using FCG.Domain.Entities;
+using FCG.Domain.Interfaces.Repository;
+using System;
 using System.Threading.Tasks;
 
 namespace FCG.Application.Services
 {
-    internal class UserService
+    public class UserService : IUserService
     {
+        private readonly IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public async Task<CreateUserResponses> CreateUserAsync(CreateUserRequest createUserRequest)
+        {
+            var user = new User
+            {
+                Name = createUserRequest.Name,
+                Email = createUserRequest.Email,
+                Password = createUserRequest.Password,
+                CreationDate = DateTime.Now,
+            };
+
+            await _userRepository.CreateUserAsync(user);
+
+            return new CreateUserResponses
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email
+            };
+        }
     }
 }

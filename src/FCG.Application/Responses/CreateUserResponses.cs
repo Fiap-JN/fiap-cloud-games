@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace FCG.Application.Responses
 {
-    internal class CreateUserResponses
+    public class CreateUserResponses
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }

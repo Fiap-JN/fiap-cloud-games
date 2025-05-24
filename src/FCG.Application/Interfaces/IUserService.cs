@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FCG.Application.Requests;
+using FCG.Application.Responses;
+using FCG.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace FCG.Application.Interfaces
 {
-    internal class IUserService
+    public interface IUserService
     {
+        Task<CreateUserResponses> CreateUserAsync(CreateUserRequest createUserRequest);
     }
 }
