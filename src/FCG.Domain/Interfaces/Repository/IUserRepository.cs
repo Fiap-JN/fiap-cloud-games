@@ -10,5 +10,6 @@ namespace FCG.Domain.Interfaces.Repository
     public interface IUserRepository
     {
         Task CreateUserAsync(User user);
+        Task<User> GetUserByEmailAsync(string email);
     }
 }

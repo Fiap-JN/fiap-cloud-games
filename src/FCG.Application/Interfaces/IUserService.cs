@@ -12,5 +12,7 @@ namespace FCG.Application.Interfaces
     public interface IUserService
     {
         Task<CreateUserResponses> CreateUserAsync(CreateUserRequest createUserRequest);
+        Task<User> GetUserByEmailAsync(string email);
+
     }
 }

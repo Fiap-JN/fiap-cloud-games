@@ -1,0 +1,22 @@
+﻿### Cadastro de novo usuário
+POST https://localhost:7162/api/user/CreateUser
+Content-Type: application/json
+
+{
+  "name": "Novo Usuário",
+  "email": "novo@empresa.com",
+  "password": "Senha@123"
+}
+
+### Login
+POST https://localhost:7162/api/user/login
+Content-Type: application/json
+
+{
+  "email": "novo@empresa.com",
+  "password": "Senha@123"
+}
+
+### Endpoint protegido, apenas admin.
+GET https://localhost:7162/api/User
+Authorization: Bearer {{token}}

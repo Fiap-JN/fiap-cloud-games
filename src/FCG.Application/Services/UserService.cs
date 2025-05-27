@@ -19,13 +19,7 @@ namespace FCG.Application.Services
 
         public async Task<CreateUserResponses> CreateUserAsync(CreateUserRequest createUserRequest)
         {
-            var user = new User
-            {
-                Name = createUserRequest.Name,
-                Email = createUserRequest.Email,
-                Password = createUserRequest.Password,
-                CreationDate = DateTime.Now,
-            };
+            var user = User.Create(createUserRequest.Name, createUserRequest.Email, createUserRequest.Password);
 
             await _userRepository.CreateUserAsync(user);
 
@@ -33,8 +27,15 @@ namespace FCG.Application.Services
             {
                 Id = user.Id,
                 Name = user.Name,
-                Email = user.Email
+                Email = user.Email,
+                CreatedAt = user.CreationDate
             };
         }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _userRepository.GetUserByEmailAsync(email);
+        }
+
     }
 }

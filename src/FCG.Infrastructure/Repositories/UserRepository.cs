@@ -1,6 +1,7 @@
 ﻿using FCG.Domain.Entities;
 using FCG.Domain.Interfaces.Repository;
 using FCG.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace FCG.Infrastructure.Repositories
@@ -19,5 +20,11 @@ namespace FCG.Infrastructure.Repositories
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
     }
 }
