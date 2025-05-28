@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FCG.Application.Interfaces;
+using FCG.Application.Requests;
+using Microsoft.AspNetCore.Mvc;
+using FCG.Application.Interfaces;
 
 namespace FCG.Web.Controllers
 {
@@ -6,17 +9,20 @@ namespace FCG.Web.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
+        private readonly IAdminService _admineService;
 
-        public AdminController(IConfiguration configuration)
+        public AdminController(IAdminService AdminService)
         {
-            _configuration = configuration;
+            _admineService = AdminService;
         }
 
         [HttpPost("CreateGame")]
-        public async Task<IActionResult> CreateGame()
+        public async Task<IActionResult> CreateGame(CreateGameRequest createGameResquest)
         {
-            return Ok();
+            var game = await _admineService.CreateGameAsync(createGameResquest);
+
+            return Ok(game);
         }
+
     }
 }
