@@ -2,6 +2,7 @@
 using FCG.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 using FCG.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FCG.Web.Controllers
 {
@@ -16,6 +17,7 @@ namespace FCG.Web.Controllers
             _admineService = AdminService;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost("CreateGame")]
         public async Task<IActionResult> CreateGame(CreateGameRequest createGameResquest)
         {

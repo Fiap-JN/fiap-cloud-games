@@ -48,6 +48,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Registre as dependências necessárias, serviços e repositório
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
 

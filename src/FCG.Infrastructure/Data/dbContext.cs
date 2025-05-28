@@ -12,5 +12,6 @@ namespace FCG.Infrastructure.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Admin> Game { get; set; }
     }
 }
