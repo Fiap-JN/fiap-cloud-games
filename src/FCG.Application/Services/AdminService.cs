@@ -35,5 +35,25 @@ namespace FCG.Application.Services
                 CreatedAt = game.CreationDate
             };
         }
+
+        public async Task<UpdateUserResponses> UpdateUserAsync(UpdateUserRequest updateUserRequest)
+        {
+            var user = Admin.UpdateUser(updateUserRequest.Id);
+
+            await _adminRepository.UpdateUserAsync(user);
+
+            Task<bool> exists = _adminRepository.VerifyIfExistsIdAsync(user);
+
+            bool isAdmin = user.IsAdmin;
+
+            if(exists.Result)
+                user.IsAdmin = true;
+
+            return new UpdateUserResponses
+            {
+                Id = user.Id,
+                Exists = exists.Result
+            };
+        }
     }
 }

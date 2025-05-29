@@ -11,5 +11,7 @@ namespace FCG.Domain.Interfaces.Repository
     public interface IAdminRepository
     {
         Task CreateGameAsync(Admin game);
+        Task UpdateUserAsync(Admin user);
+        Task<bool> VerifyIfExistsIdAsync(Admin user);
     }
 }

@@ -17,6 +17,7 @@ namespace FCG.Infrastructure.Repositories
 
         public async Task CreateUserAsync(User user)
         {
+            bool exists = await _context.Users.AnyAsync(u => u.Id == user.Id);
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
         }

@@ -12,5 +12,6 @@ namespace FCG.Application.Interfaces
     public interface IAdminService
     {
         Task<CreateGameResponses> CreateGameAsync(CreateGameRequest createGameRequest);
+        Task<UpdateUserResponses> UpdateUserAsync(UpdateUserRequest updateUserRequest);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FCG.Domain.Entities;
 using FCG.Domain.Interfaces.Repository;
 using FCG.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +24,18 @@ namespace FCG.Infrastructure.Repositories
             await _context.Game.AddAsync(game);
             await _context.SaveChangesAsync();
         }
+        
+        public async Task UpdateUserAsync(Admin user)
+        {
+            bool exists = await _context.Users.AnyAsync(u => u.Id == user.Id);
+            await _context.UserUpdateForAdmin.AddAsync(user);
+        }
+
+        public async Task<bool> VerifyIfExistsIdAsync(Admin user)
+        {
+            bool exists = await _context.Users.AnyAsync(u => u.Id == user.Id);
+            return exists;
+        }
+
     }
 }

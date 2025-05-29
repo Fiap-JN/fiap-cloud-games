@@ -26,5 +26,18 @@ namespace FCG.Web.Controllers
             return Ok(game);
         }
 
+        [Authorize(Policy = "Admin")]
+        [HttpPost("UpdateUser")]
+
+        public async Task<IActionResult> UpdateUser(UpdateUserRequest updateUserResquest)
+        {
+            var user = await _admineService.UpdateUserAsync(updateUserResquest);
+
+            if(user.Exists)
+                return Ok(user);
+            else
+                throw new ArgumentException("Usuário não encontrado");
+        }
+
     }
 }

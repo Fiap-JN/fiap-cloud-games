@@ -39,5 +39,16 @@ namespace FCG.Domain.Entities
                 Gender = gender
             };
         }
+
+        public static Admin UpdateUser(int id)
+        {
+            if (int.IsNegative(id))
+                throw new ArgumentException("Preço é deve ser um valor válido");
+
+            return new Admin
+            {
+                Id = id
+            };
+        }
     }
 }

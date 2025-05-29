@@ -10,8 +10,8 @@ namespace FCG.Infrastructure.Data
             : base(options)
         {
         }
-
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Game { get; set; }
+        public DbSet<Admin> UserUpdateForAdmin { get; set; }
     }
 }
