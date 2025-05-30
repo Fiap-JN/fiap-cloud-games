@@ -1,59 +1,108 @@
 ﻿using FCG.Application.Interfaces;
-using FCG.Application.Requests;
-using FCG.Application.Responses;
 using FCG.Domain.Entities;
 using FCG.Domain.Interfaces.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FCG.Application.Services
 {
     public class AdminService : IAdminService
     {
-        private readonly IAdminRepository _adminRepository;
+        private readonly IUserRepository _userRepository;
 
-        public AdminService(IAdminRepository adminRepository)
+        public AdminService(IUserRepository userRepository)
         {
-            _adminRepository = adminRepository;
+            _userRepository = userRepository;
         }
 
-        public async Task<CreateGameResponses> CreateGameAsync(CreateGameRequest createGameRequest)
+        public async Task PromoteUserAsync(int userId)
         {
-            var game = Admin.Create(createGameRequest.Name, createGameRequest.Price, createGameRequest.Gender);
-
-            await _adminRepository.CreateGameAsync(game);   
-
-            return new CreateGameResponses
+            try
             {
-                Id = game.Id,
-                Name = game.Name,
-                Price = game.Price,
-                Gender = game.Gender,
-                CreatedAt = game.CreationDate
-            };
-        }
+                var user = await _userRepository.GetUserByIdAsync(userId);
 
-        public async Task<UpdateUserResponses> UpdateUserAsync(UpdateUserRequest updateUserRequest)
-        {
-            var user = Admin.UpdateUser(updateUserRequest.Id);
+                if (user == null)
+                {
+                    throw new KeyNotFoundException("Usuário não encontrado.");
+                }
 
-            await _adminRepository.UpdateUserAsync(user);
-
-            Task<bool> exists = _adminRepository.VerifyIfExistsIdAsync(user);
-
-            bool isAdmin = user.IsAdmin;
-
-            if(exists.Result)
                 user.IsAdmin = true;
+                user.UpdateDate = DateTime.Now;
 
-            return new UpdateUserResponses
+                await _userRepository.UpdateUserAsync(user);
+            }
+            catch (Exception ex)
             {
-                Id = user.Id,
-                Exists = exists.Result
-            };
+                throw;
+            }
+        }
+
+        public async Task BanUserAsync(int userId)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserByIdAsync(userId);
+
+                if (user == null)
+                {
+                    throw new KeyNotFoundException("Usuário não encontrado.");
+                }
+
+                user.IsBanned = true;
+                user.UpdateDate = DateTime.UtcNow;
+
+                await _userRepository.UpdateUserAsync(user);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task UnbanUserAsync(int userId)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserByIdAsync(userId);
+
+                if (user == null)
+                {
+                    throw new KeyNotFoundException("Usuário não encontrado.");
+                }
+
+                user.IsBanned = false;
+                user.UpdateDate = DateTime.Now;
+
+                await _userRepository.UpdateUserAsync(user);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            try
+            {
+                var users = await _userRepository.GetAllUsersAsync();
+                return users;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<User>> GetAllBannedUsersAsync()
+        {
+            try
+            {
+                var users = await _userRepository.GetAllBannedUsersAsync();
+                return users;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

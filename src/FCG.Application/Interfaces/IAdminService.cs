@@ -1,17 +1,13 @@
-﻿using FCG.Application.Requests;
-using FCG.Application.Responses;
-using FCG.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FCG.Domain.Entities;
 
 namespace FCG.Application.Interfaces
 {
     public interface IAdminService
     {
-        Task<CreateGameResponses> CreateGameAsync(CreateGameRequest createGameRequest);
-        Task<UpdateUserResponses> UpdateUserAsync(UpdateUserRequest updateUserRequest);
+        Task PromoteUserAsync(int userId);
+        Task BanUserAsync(int userId);
+        Task UnbanUserAsync(int userId);
+        Task<List<User>> GetAllUsersAsync();
+        Task<List<User>> GetAllBannedUsersAsync();
     }
 }

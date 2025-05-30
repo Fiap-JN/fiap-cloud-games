@@ -1,6 +1,5 @@
 ﻿using FCG.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace FCG.Infrastructure.Data
 {
@@ -11,7 +10,9 @@ namespace FCG.Infrastructure.Data
         {
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Admin> Game { get; set; }
+        public DbSet<Game> Games { get; set; }
         public DbSet<Admin> UserUpdateForAdmin { get; set; }
+
+
     }
 }

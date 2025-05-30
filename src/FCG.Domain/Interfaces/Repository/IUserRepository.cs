@@ -1,8 +1,5 @@
 ﻿using FCG.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FCG.Domain.Interfaces.Repository
@@ -11,5 +8,9 @@ namespace FCG.Domain.Interfaces.Repository
     {
         Task CreateUserAsync(User user);
         Task<User> GetUserByEmailAsync(string email);
+        Task<User> GetUserByIdAsync(int id);
+        Task<List<User>> GetAllUsersAsync();
+        Task<List<User>> GetAllBannedUsersAsync();
+        Task UpdateUserAsync(User user);
     }
 }

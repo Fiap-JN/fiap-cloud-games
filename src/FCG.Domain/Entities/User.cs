@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FCG.Domain.Entities
 {
@@ -16,8 +11,9 @@ namespace FCG.Domain.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public bool IsAdmin { get; set; } = false;
+        public bool IsBanned { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public DateTime DeletedDate { get; set; }
 
 
