@@ -112,7 +112,7 @@ TDD ou BDD aplicados no módulo de autenticação e cadastro de usuário.
 ---
 
 🧠 Event Storming
-Documentação disponível no Miro contendo:
+Documentação disponível no Miro contendo: https://miro.com/app/board/uXjVI0KTeKY=/
 ●	Fluxo de Criação de Usuário
 
 ●	Fluxo de Criação de Jogos
