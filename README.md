@@ -60,46 +60,55 @@ Plataforma de venda de jogos digitais e gerenciamento de biblioteca de jogos adq
 
 ---
 
-📁 Estrutura do Projeto
+<h2>📁 Estrutura do Projeto</h2>
 
+<pre><code>
 FCG/
 │
-├── FCG.API/ API principal (.NET 8)
-│ ├── Controllers/ Endpoints RESTful
-│ ├── Middlewares/ Tratamento de exceções e logs
-│ ├── Program.cs/ Configuração principal
-│ └── appsettings.json/ Configurações da aplicação
+├── FCG.API/              API principal (.NET 8)
+│   ├── Controllers/       Endpoints RESTful
+│   ├── Middlewares/       Tratamento de exceções e logs
+│   ├── Program.cs         Configuração principal
+│   └── appsettings.json   Configurações da aplicação
 │
-├── FCG.Domain/ Entidades e regras de negócio (DDD)
-│ └── Entities/ User, Game
+├── FCG.Domain/           Entidades e regras de negócio (DDD)
+│   └── Entities/          User, Game
 │
-├── FCG.Application/ Casos de uso (Application Layer)
+├── FCG.Application/      Casos de uso (Application Layer)
 │
-├── FCG.Infra/ Repositórios e contexto EF
-│ └── Migrations/ Scripts gerados pelo EF Core
+├── FCG.Infra/            Repositórios e contexto EF
+│   └── Migrations/        Scripts gerados pelo EF Core
 │
-├── FCG.Tests/ Testes unitários e BDD
+├── FCG.Tests/            Testes unitários e BDD
 │
-└── README.md 
+└── README.md
+</code></pre>
 
 ---
 
 🔧 Como Rodar o Projeto
 
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/CrJunior08/fiap-cloud-games.git
-   cd fiap-cloud-games
+1.Clone este repositório:,
+git clone https://github.com/CrJunior08/fiap-cloud-games.git
+cd fiap-cloud-games
+ 
+2. Configure o banco de dados no appsettings.json. Exemplo para SQL Server:,
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=FCG_DB;User Id=sa;Password=SuaSenhaForteAqui;TrustServerCertificate=True;"
+}
 
-Configure o banco de dados no appsettings.json.
+3.Crie o banco de dados manualmente (opcional):,
+Acesse o SQL Server Management Studio (SSMS).
+Execute:
+CREATE DATABASE FCG_DB;
 
-Execute as migrations:
+4. Execute as migrations:,
 dotnet ef database update
 
-Rode a aplicação:
+5. Rode a aplicação:,
 dotnet run --project FCG.API
 
-Acesse a documentação Swagger:
+Acesse a documentação Swagger:,
 http://localhost:{porta}/swagger
 
 ---
@@ -112,7 +121,7 @@ TDD ou BDD aplicados no módulo de autenticação e cadastro de usuário.
 ---
 
 🧠 Event Storming
-Documentação disponível no Miro contendo:
+Documentação disponível no Miro contendo: https://miro.com/app/board/uXjVI0KTeKY=/
 ●	Fluxo de Criação de Usuário
 
 ●	Fluxo de Criação de Jogos
