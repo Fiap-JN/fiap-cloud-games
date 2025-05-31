@@ -86,20 +86,27 @@ FCG/
 
 🔧 Como Rodar o Projeto
 
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/CrJunior08/fiap-cloud-games.git
-   cd fiap-cloud-games
+1.Clone este repositório:,
+git clone https://github.com/CrJunior08/fiap-cloud-games.git
+cd fiap-cloud-games
+ 
+2. Configure o banco de dados no appsettings.json. Exemplo para SQL Server:,
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=FCG_DB;User Id=sa;Password=SuaSenhaForteAqui;TrustServerCertificate=True;"
+}
 
-Configure o banco de dados no appsettings.json.
+3.Crie o banco de dados manualmente (opcional):,
+Acesse o SQL Server Management Studio (SSMS).
+Execute:
+CREATE DATABASE FCG_DB;
 
-Execute as migrations:
+4. Execute as migrations:,
 dotnet ef database update
 
-Rode a aplicação:
+5. Rode a aplicação:,
 dotnet run --project FCG.API
 
-Acesse a documentação Swagger:
+Acesse a documentação Swagger:,
 http://localhost:{porta}/swagger
 
 ---
