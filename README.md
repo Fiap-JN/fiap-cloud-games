@@ -60,27 +60,29 @@ Plataforma de venda de jogos digitais e gerenciamento de biblioteca de jogos adq
 
 ---
 
-📁 Estrutura do Projeto
+<h2>📁 Estrutura do Projeto</h2>
 
+<pre><code>
 FCG/
 │
-├── FCG.API/ API principal (.NET 8)
-│ ├── Controllers/ Endpoints RESTful
-│ ├── Middlewares/ Tratamento de exceções e logs
-│ ├── Program.cs/ Configuração principal
-│ └── appsettings.json/ Configurações da aplicação
+├── FCG.API/              API principal (.NET 8)
+│   ├── Controllers/       Endpoints RESTful
+│   ├── Middlewares/       Tratamento de exceções e logs
+│   ├── Program.cs         Configuração principal
+│   └── appsettings.json   Configurações da aplicação
 │
-├── FCG.Domain/ Entidades e regras de negócio (DDD)
-│ └── Entities/ User, Game
+├── FCG.Domain/           Entidades e regras de negócio (DDD)
+│   └── Entities/          User, Game
 │
-├── FCG.Application/ Casos de uso (Application Layer)
+├── FCG.Application/      Casos de uso (Application Layer)
 │
-├── FCG.Infra/ Repositórios e contexto EF
-│ └── Migrations/ Scripts gerados pelo EF Core
+├── FCG.Infra/            Repositórios e contexto EF
+│   └── Migrations/        Scripts gerados pelo EF Core
 │
-├── FCG.Tests/ Testes unitários e BDD
+├── FCG.Tests/            Testes unitários e BDD
 │
-└── README.md 
+└── README.md
+</code></pre>
 
 ---
 
