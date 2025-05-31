@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,8 +43,13 @@ builder.Services.AddAuthorization(options =>
 #endregion
 
 // Banco simulado em memória
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseInMemoryDatabase("TestDb"));
+
+// Conexão Banco SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("TestDb"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Registre as dependências necessárias, serviços e repositório
 builder.Services.AddScoped<IUserRepository, UserRepository>();

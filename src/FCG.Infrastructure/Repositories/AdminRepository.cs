@@ -15,12 +15,6 @@ namespace FCG.Infrastructure.Repositories
         }
 
         
-        public async Task UpdateUserAsync(Admin user)
-        {
-            bool exists = await _context.Users.AnyAsync(u => u.Id == user.Id);
-            await _context.UserUpdateForAdmin.AddAsync(user);
-        }
-
         public async Task<bool> VerifyIfExistsIdAsync(Admin user)
         {
             bool exists = await _context.Users.AnyAsync(u => u.Id == user.Id);
