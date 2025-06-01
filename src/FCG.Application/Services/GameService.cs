@@ -17,6 +17,10 @@ namespace FCG.Application.Services
 
         public async Task<CreateGameResponse> CreateGameAsync(CreateGameRequest request)
         {
+            if(string.IsNullOrWhiteSpace(request.Name)) {
+                throw new ArgumentException("Nome do jogo é obrigatório");
+            }
+
             var game = new Game
             {
                 Name = request.Name,
