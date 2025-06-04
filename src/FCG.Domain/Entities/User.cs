@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FCG.Domain.Exceptions;
 
 namespace FCG.Domain.Entities
 {
@@ -20,13 +21,13 @@ namespace FCG.Domain.Entities
         public static User Create(string name, string email, string password)
         {
             if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Nome é obrigatório");
+                throw new ValidationUserException("Nome é obrigatório");
 
             if (!IsValidEmail(email))
-                throw new ArgumentException("E-mail inválido");
+                throw new ValidationUserException("E-mail inválido");
 
             if (!IsValidPassword(password))
-                throw new ArgumentException("Senha deve ter no mínimo 8 caracteres, com letras, números e caracteres especiais.");
+                throw new ValidationUserException("Senha deve ter no mínimo 8 caracteres, com letras, números e caracteres especiais.");
 
             return new User
             {

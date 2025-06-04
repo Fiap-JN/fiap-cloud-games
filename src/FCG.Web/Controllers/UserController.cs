@@ -29,17 +29,10 @@ namespace FCG.Web.Controllers
         [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser(CreateUserRequest createUserRequest)
         {
-            try
-            {
-                var user = await _userService.CreateUserAsync(createUserRequest);
-                _logger.LogInformation($"Novo usuário criado com sucesso: {user.Name}");
-                return Ok(user);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erro ao criar usuário.");
-                return StatusCode(500, "Erro interno ao criar usuário. Tente novamente.");
-            }
+            var user = await _userService.CreateUserAsync(createUserRequest);
+            _logger.LogInformation($"Novo usuário criado com sucesso: {user.Name}");
+
+            return Ok(user);
         }
 
         [HttpPost("login")]

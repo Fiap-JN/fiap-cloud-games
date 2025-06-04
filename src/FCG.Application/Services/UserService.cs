@@ -2,6 +2,7 @@
 using FCG.Application.Requests;
 using FCG.Application.Responses;
 using FCG.Domain.Entities;
+using FCG.Domain.Exceptions;
 using FCG.Domain.Interfaces.Repository;
 
 
@@ -22,7 +23,7 @@ namespace FCG.Application.Services
             var existingUser = await _userRepository.GetUserByEmailAsync(createUserRequest.Email);
             if (existingUser != null)
             {
-                throw new InvalidOperationException("E-mail já cadastrado!");
+                throw new ConflictException("E-mail já cadastrado!");
             }
 
             await _userRepository.CreateUserAsync(user);
