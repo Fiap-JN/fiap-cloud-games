@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0FC00E33-65F4-4750-9420-5B43082C1B78}"
+	ProjectSection(SolutionItems) = preProject
+		src\FCG.Web\Dockerfile = src\FCG.Web\Dockerfile
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AC55BB88-F2F9-432F-8F65-1698E6B5B951}"
 EndProject
@@ -23,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FCG.Application", "src\FCG.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FCG.Domain", "src\FCG.Domain\FCG.Domain.csproj", "{B36E12A6-C55C-4C2F-8DE4-2C05125DA6BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCG.Web", "src\FCG.Web\FCG.Web.csproj", "{97B17D69-E73F-4E0D-93F6-F493D49C036F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FCG.Web", "src\FCG.Web\FCG.Web.csproj", "{97B17D69-E73F-4E0D-93F6-F493D49C036F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
