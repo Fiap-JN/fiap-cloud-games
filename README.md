@@ -56,6 +56,8 @@ Plataforma de venda de jogos digitais e gerenciamento de biblioteca de jogos adq
 | JWT                                   | Autenticação e Autorização        |
 | xUnit / NUnit / BDDfy         | Testes Unitários e/ou BDD         |
 | FluentValidation                 | Validações                                  |
+| Docker                           | Containerização                             |
+| Azure DevOps                     | Pipelines CI/CD                            |
 
 
 ---
@@ -123,6 +125,7 @@ TDD ou BDD aplicados no módulo de autenticação e cadastro de usuário.
 ---
 
 🧠 Event Storming
+
 Documentação disponível no Miro contendo: https://miro.com/app/board/uXjVI0KTeKY=/
 
 ●	Fluxo de Criação de Usuário
@@ -130,3 +133,22 @@ Documentação disponível no Miro contendo: https://miro.com/app/board/uXjVI0KT
 ●	Fluxo de Criação de Jogos
 
 ●	Cores e domínios conforme DDD (Commands, Events, Aggregates)
+
+--- 
+
+🐳 Docker
+
+Build e execução local com Docker: 
+
+docker build -t fcg-api:latest .
+docker run -d -p 8080:80 fcg-api:latest
+
+---
+
+🔄 CI/CD (Azure DevOps)
+
+●	CI: Build e Testes automáticos a cada commit/PR (azure-pipelines.yml)
+
+●	CD: Deploy automatizado após merge na main (cd-pipeline.yml)
+
+●	Executado com agente local configurado com Docker Desktop
